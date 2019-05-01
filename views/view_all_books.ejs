@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>View All books</h2>
+    <% if(books.length === 0) { %>
+    <h2>No book available</h2>
+    <% }else { books.forEach((book) => { %>
+    <div>
+      <a href="/book/view/<%=book._id%>"><%= book.title %></a>
+      <span><%= book.author %></span>
+      <span><%= book.genre %></span>
+    </div>
+    <% }) } %>
+  </body>
+</html>
