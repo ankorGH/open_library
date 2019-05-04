@@ -35,9 +35,9 @@ app.use("/book", bookRouter);
 
 app.get("/", (req, res) => {
   if (req.user) {
-    return res.redirect("book/");
+    return res.redirect("/book");
   }
-  res.render("index");
+  res.render("index", { user: req.user });
 });
 
 app.use((req, res, next) => {
@@ -51,11 +51,14 @@ app.use(function(err, req, res, next) {
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
   if (err.message.includes("duplicate")) {
-    return res.render("signup", { message: "username is already taken" });
+    return res.render("signup", {
+      message: "username is already taken",
+      user: req.user
+    });
   }
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
+  res.render("error", { user: req.user });
 });
 
 app.listen(PORT, () => {

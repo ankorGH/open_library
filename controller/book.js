@@ -4,7 +4,7 @@ const BookModel = require("../model/book");
 const HOME = async (req, res) => {
   try {
     const books = await BookModel.find({ addedBy: req.user._id });
-    res.render("user", { books });
+    res.render("user", { books, user: req.user });
   } catch (e) {
     console.log(e);
   }
@@ -20,7 +20,7 @@ const searchBook = async (req, res) => {
     const books = await BookModel.find({
       $or: [{ title: book }, { genre: book }]
     });
-    res.render("search", { books });
+    res.render("search", { books, user: req.user });
   } catch (e) {
     console.log(e);
   }
@@ -32,7 +32,7 @@ module.exports.searchBook = searchBook;
 const viewBook = async (req, res) => {
   try {
     const books = await BookModel.find();
-    res.render("view_all_books", { books });
+    res.render("view_all_books", { books, user: req.user });
   } catch (e) {
     console.log(e);
   }
@@ -45,7 +45,7 @@ const viewABook = async (req, res) => {
   try {
     const { bookId } = req.params;
     const book = await BookModel.findById(bookId);
-    res.render("view_book", { book });
+    res.render("view_book", { book, user: req.user });
   } catch (e) {
     console.log(e);
   }
@@ -55,7 +55,7 @@ module.exports.viewABook = viewABook;
 
 // show add a book page
 const showAddPage = (req, res) => {
-  res.render("add_book");
+  res.render("add_book", { user: req.user });
 };
 
 module.exports.showAddPage = showAddPage;
@@ -79,7 +79,7 @@ const showEditPage = async (req, res) => {
   const { bookId } = req.params;
   try {
     const book = await BookModel.findById(bookId);
-    res.render("edit_book", { book });
+    res.render("edit_book", { book, user: req.user });
   } catch (e) {
     console.log(e);
   }

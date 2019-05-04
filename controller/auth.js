@@ -1,13 +1,13 @@
 const User = require("../model/user");
 
 const showSignUp = (req, res) => {
-  res.render("signup", { message: "" });
+  res.render("signup", { message: "", user: req.user });
 };
 
 module.exports.showSignUp = showSignUp;
 
 const showSignIn = (req, res) => {
-  res.render("signin");
+  res.render("signin", { user: req.user });
 };
 
 module.exports.showSignIn = showSignIn;
