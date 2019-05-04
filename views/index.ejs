@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Library</title>
+    <% include ./partials/head %>
+    <style>
+      main {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #hero {
+        max-width: 80%;
+      }
+    </style>
   </head>
   <body>
-    <a href="/auth/signin">signin</a>
-    <a href="/auth/signup">signup</a>
-
-    <div>
-      <h3>Library for All</h3>
-    </div>
-    <form method="POST" action="/book/search">
-      <input type="text" name="book" placeholder="Search a book" />
-      <button type="submit">Submit</button>
-    </form>
-    <a href="/book/view">View All</a>
+    <header>
+      <% include ./partials/header %>
+    </header>
+    <main>
+      <div id="hero">
+        <h1>Library for All</h1>
+        <form method="POST" action="/book/search">
+          <input
+            type="text"
+            class="form-input"
+            name="book"
+            placeholder="Search a book"
+          />
+          <button type="submit" class="btn btn-error">Submit</button>
+          <a href="/book/view" class="btn">View All Books</a>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

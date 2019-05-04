@@ -1,0 +1,14 @@
+<header class="navbar">
+  <section class="navbar-section">
+    <a href="/" class="btn btn-link">Home</a>
+  </section>
+  <section class="navbar-center">
+    <% if(!user) { %>
+    <a href="/auth/signin" class="btn btn-link">signin</a>
+    <a href="/auth/signup" class="btn btn-link">signup</a>
+    <% } else { %>
+    <a href="/auth/signout" class="btn btn-link">Signout</a>
+    <% } %>
+  </section>
+  <section class="navbar-section"></section>
+</header>

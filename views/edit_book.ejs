@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <% include ./partials/head %>
   </head>
   <body>
-    <h2>Edit a book</h2>
-    <form action="/book/edit/<%= book._id%>?_method=PUT" method="POST">
-      <label>Title</label>
-      <input type="text" name="title" value="<%=book.title%>" required />
-      <label>Author</label>
-      <input type="text" name="author" value="<%=book.author%>" required />
-      <label>Genre</label>
-      <input type="text" name="genre" value="<%=book.genre%>" required />
-      <button type="submit">Submit</button>
-    </form>
+    <header>
+      <% include ./partials/header %>
+    </header>
+    <main>
+      <h2>Edit a book</h2>
+      <form action="/book/edit/<%= book._id%>?_method=PUT" method="POST">
+        <label>Title</label>
+        <input type="text" name="title" value="<%=book.title%>" required />
+        <label>Author</label>
+        <input type="text" name="author" value="<%=book.author%>" required />
+        <label>Genre</label>
+        <input type="text" name="genre" value="<%=book.genre%>" required />
+        <button type="submit">Submit</button>
+      </form>
+    </main>
   </body>
 </html>

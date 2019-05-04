@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <% include ./partials/head %>
   </head>
   <body>
-    <h2>View book</h2>
-    <div>
-      <a href="/book/view/<%=book._id%>"><%= book.title %></a>
-      <span><%= book.author %> </span>
-      <span><%= book.genre %> </span>
-    </div>
+    <header>
+      <% include ./partials/header %>
+    </header>
+    <main>
+      <h2>View book</h2>
+      <div>
+        <h2><%= book.title %></h2>
+        <span>Author: <%= book.author %></span>
+        <span>Genre: <%= book.genre %> </span>
+      </div>
+    </main>
   </body>
 </html>
