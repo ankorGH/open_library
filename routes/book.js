@@ -34,7 +34,7 @@ router.post("/create", authCheck, addBook);
 router.get("/edit/:bookId", authCheck, showEditPage);
 
 // edit a book
-router.put("/edit/:bookId", authCheck), editBook;
+router.put("/edit/:bookId", authCheck, editBook);
 
 // delete a book
 router.delete("/delete/:bookId", authCheck, deleteBook);
