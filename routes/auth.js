@@ -4,19 +4,28 @@ const authCheck = require("./authCheck");
 const {
   signUpUser,
   showSignUp,
-  signInUser,
   showSignIn,
   signOutUser
 } = require("../controller/auth");
 
 router.post(
   "/signin",
-  passport.authenticate("local", { failureRedirect: "/auth/sigin" }),
-  signInUser
+  passport.authenticate("local", {
+    failureRedirect: "/auth/signin",
+    successRedirect: "/book"
+  })
 );
+
+// show signin page
 router.get("/signin", showSignIn);
+
+// show signup message
 router.get("/signup", showSignUp);
+
+// signup user
 router.post("/signup", signUpUser);
+
+// signout user
 router.get("/signout", authCheck, signOutUser);
 
 module.exports = router;

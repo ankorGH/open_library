@@ -11,6 +11,7 @@ const app = express();
 
 const path = require("path");
 const bodyParser = require("body-parser");
+const createError = require("http-errors");
 
 const { PORT, COOKIE_NAME, COOKIE_KEY } = require("./config");
 
@@ -37,6 +38,24 @@ app.get("/", (req, res) => {
     return res.redirect("book/");
   }
   res.render("index");
+});
+
+app.use((req, res, next) => {
+  next(createError(404));
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+
+  if (err.message.includes("duplicate")) {
+    return res.render("signup", { message: "username is already taken" });
+  }
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
 });
 
 app.listen(PORT, () => {
